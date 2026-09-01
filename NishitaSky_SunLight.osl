@@ -83,7 +83,7 @@ shader nishita_sky (
     vector Vector = P,
     output color Rayleigh = 0.0,
     output color Mie = 0.0,
-    output closure color Sky = Ci)
+    output color Sky = 0.0)
 
 {
 
@@ -227,5 +227,5 @@ shader nishita_sky (
     if (dot(SunDirection, normalize(SunVector)) > sun_size)
       Combine += SunColor / (1 - sun_size);
 
-    Sky = Combine * background();
+    Sky = Combine;
 }
