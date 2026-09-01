@@ -220,12 +220,12 @@ shader nishita_sky (
 
     Rayleigh = color(SumR * phaseR * BetaR) * Intensity;
     Mie = color(SumM * phaseM * BetaM) * Intensity;
-    color c = Rayleigh + Mie;
+    color Combine = Rayleigh + Mie;
 
     float sun_size = cos(radians(SunSize / 1.25));
 
     if (dot(SunDirection, normalize(SunVector)) > sun_size)
-      c += SunColor / (1 - sun_size);
+      Combine += SunColor / (1 - sun_size);
 
-    Sky = c * background();
+    Sky = Combine * background();
 }
