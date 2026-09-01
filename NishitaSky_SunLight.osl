@@ -225,7 +225,7 @@ shader nishita_sky (
     float sun_size = cos(radians(SunSize / 1.25));
 
     if (dot(SunDirection, normalize(SunVector)) > sun_size)
-      Combine += SunColor / (1 - sun_size);
+      Combine *= SunColor / (1 - sun_size);
 
     Sky = Combine;
 }
